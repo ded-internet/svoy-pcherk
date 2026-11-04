@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B1327">
+  <meta name="color-scheme" content="dark">
+  <title>Свой почерк — ДЕД интернет</title>
+  <script src="telegram-web-app.js"></script>
+  <script>
+    // меняете только этот блок
+    window.KK_DATA = {
+      pageTitle: 'Свой почерк — ДЕД интернет',
+      channel: 'ДЕД ИНТЕРНЕТ',
+      headingLines: ['Свой', 'почерк'],
+      intro: 'Ваш опыт, ваши мысли и ваша интонация — в текстах, которые помогает создавать ИИ.',
+      action: {
+        eyebrow: 'ЗНАКОМСТВО С ПРОДУКТОМ',
+        title: 'Научите ИИ писать вашим голосом',
+        sentences: [
+          '«Свой почерк» помогает передать нейросети вашу манеру письма.',
+          'Чтобы тексты звучали естественно и были похожи на вас.'
+        ],
+        button: 'Узнать о «Своём почерке»',
+        url: 'https://lix.li/xC8j4q'
+      },
+      listTitle: 'Что посмотреть',
+      cards: [
+        {
+          number: '01',
+          title: 'Свой почерк',
+          subtitle: 'Научит ИИ пасать вашим голосом',
+          url: 'https://lix.li/xC8j4q'
+        }
+      ],
+      footerName: 'Константин Евдокименко',
+      footerSchool: 'ДЕД интернет',
+      linkLabel: 'Открыть ссылку'
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0B1327;
+      --card: #162541;
+      --nested: #24345B;
+      --white: #FFFFFF;
+      --muted: #C5D1E8;
+      --accent: #71E4D8;
+      --border: rgba(197, 209, 232, .14);
+      --gradient: linear-gradient(105deg, #8EA8FF 0%, #71E4D8 100%);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Manrope, 'Segoe UI', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: break-word;
+    }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    button, a { touch-action: manipulation; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .app {
+      width: 100%;
+      max-width: 560px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: calc(42px + env(safe-area-inset-top, 0px)) 24px calc(30px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+      flex-direction: column;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 26px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .21em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ''; width: 19px; height: 1px; flex: none; background: var(--accent); }
+    .hero-title {
+      margin: 0;
+      font-family: Inter, 'Arial Black', 'Segoe UI', sans-serif;
+      font-size: clamp(58px, 14vw, 84px);
+      font-weight: 900;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    .hero-title span { display: block; }
+    .hero-title span:last-child { color: var(--accent); }
+    .hero-description {
+      max-width: 420px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+    .primary-card {
+      position: relative;
+      margin-top: 42px;
+      padding: 27px 23px 23px;
+      border: 1px solid rgba(197, 209, 232, .18);
+      border-radius: 26px;
+      background: var(--card);
+      box-shadow: 0 14px 42px rgba(0,0,0,.1);
+      overflow: hidden;
+    }
+    .primary-card::after {
+      content: '';
+      position: absolute;
+      top: -65px;
+      right: -80px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(113, 228, 216, .12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .section-label { margin: 0 0 15px; color: var(--accent); font-size: 10px; letter-spacing: .16em; font-weight: 800; }
+    .primary-card h2 {
+      position: relative;
+      margin: 0 0 18px;
+      max-width: 390px;
+      font-family: Inter, 'Arial Black', 'Segoe UI', sans-serif;
+      font-size: clamp(26px, 6.2vw, 34px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.16;
+    }
+    .primary-card p:not(.section-label) { margin: 0 0 9px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 24px;
+      min-height: 60px;
+      padding: 15px 18px 15px 20px;
+      border-radius: 16px;
+      background: var(--gradient);
+      color: #0B1327;
+      font-size: 15px;
+      line-height: 1.3;
+      font-weight: 800;
+      box-shadow: 0 8px 25px rgba(113, 228, 216, .12);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .cta:active, .item:active { transform: scale(.985); }
+    .cta:hover { filter: brightness(1.06); }
+    .icon-arrow { flex: none; width: 21px; height: 21px; }
+    .list-section { margin-top: 37px; }
+    .list-heading { margin: 0 0 17px; font-family: Inter, 'Arial Black', 'Segoe UI', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -.025em; }
+    .items { display: grid; gap: 12px; }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-height: 92px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: var(--card);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .item:hover { background: #1A2C4D; }
+    .item-number {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      flex: none;
+      border: 1px solid rgba(197,209,232,.10);
+      border-radius: 13px;
+      background: var(--nested);
+      color: var(--accent);
+      font-family: Inter, 'Segoe UI', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .item-text { flex: 1; min-width: 0; }
+    .item-title { margin: 0 0 5px; font-size: 15px; font-weight: 800; line-height: 1.3; }
+    .item-subtitle { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .item-arrow {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 50%;
+      background: var(--nested);
+      color: var(--accent);
+    }
+    .item-arrow .icon-arrow { width: 18px; height: 18px; }
+    .footer {
+      margin-top: auto;
+      padding-top: 48px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .footer::before { content: ''; display: block; height: 1px; margin-bottom: 19px; background: var(--border); }
+    .footer-name { color: var(--white); font-weight: 800; }
+    .footer-school { color: var(--muted); }
+    @media (max-width: 365px) {
+      .app { padding-left: 24px; padding-right: 24px; }
+      .primary-card { padding: 23px 19px 19px; }
+      .hero-title { font-size: 58px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main id="app" class="app"></main>
+  <script>
+    (() => {
+      'use strict';
+      const data = window.KK_DATA;
+      const tg = window.Telegram && window.Telegram.WebApp;
+      const telegramMarker = /tgWebApp/i.test(location.hash + location.search);
+      const telegramProxy = window.TelegramWebviewProxy;
+      const iosHandler = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.performAction;
+      const insideTelegram = Boolean(telegramMarker || telegramProxy || iosHandler);
+      const app = document.getElementById('app');
+
+      function node(tag, className, value) {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        if (value !== undefined) el.textContent = value;
+        return el;
+      }
+
+      function arrow() {
+        const ns = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('class', 'icon-arrow');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+        svg.setAttribute('aria-hidden', 'true');
+        const p = document.createElementNS(ns, 'path');
+        p.setAttribute('d', 'M5 12h14m-6-6 6 6-6 6');
+        svg.append(p);
+        return svg;
+      }
+
+      function makeLink(url, className, text) {
+        const a = node('a', className);
+        a.href = url;
+        a.dataset.url = url;
+        a.target = insideTelegram ? '_self' : '_blank';
+        if (!insideTelegram) a.rel = 'noopener noreferrer';
+        if (text) a.append(node('span', '', text));
+        a.append(arrow());
+        a.addEventListener('click', onLinkClick);
+        return a;
+      }
+
+      function nativeEvent(eventName, eventData = {}) {
+        if (telegramProxy && typeof telegramProxy.postEvent === 'function') {
+          telegramProxy.postEvent(eventName, JSON.stringify(eventData));
+          return true;
+        }
+        if (iosHandler && typeof iosHandler.postMessage === 'function') {
+          iosHandler.postMessage(JSON.stringify({ eventName, eventData }));
+          return true;
+        }
+        return false;
+      }
+
+      function onLinkClick(event) {
+        if (!insideTelegram) return;
+        const url = event.currentTarget.dataset.url;
+        if (!url) return;
+        const isTgLink = url.startsWith('https://t.me/');
+        if (tg) {
+          if (isTgLink && typeof tg.close === 'function' && typeof tg.openTelegramLink === 'function') {
+            event.preventDefault();
+            tg.close();
+            tg.openTelegramLink(url);
+          } else if (!isTgLink && typeof tg.openLink === 'function') {
+            event.preventDefault();
+            tg.openLink(url);
+          }
+          return;
+        }
+        if (isTgLink) {
+          const pathFull = url.slice('https://t.me'.length);
+          if (telegramProxy || iosHandler) {
+            event.preventDefault();
+            nativeEvent('web_app_close');
+            nativeEvent('web_app_open_tg_link', { path_full: pathFull });
+          }
+        } else if (telegramProxy || iosHandler) {
+          event.preventDefault();
+          nativeEvent('web_app_open_link', { url });
+        }
+      }
+
+      function render() {
+        document.title = data.pageTitle;
+        const header = node('header', 'hero');
+        header.append(node('p', 'eyebrow', data.channel));
+        const h1 = node('h1', 'hero-title');
+        data.headingLines.forEach(line => h1.append(node('span', '', line)));
+        header.append(h1, node('p', 'hero-description', data.intro));
+
+        const primary = node('section', 'primary-card');
+        primary.append(node('p', 'section-label', data.action.eyebrow));
+        primary.append(node('h2', '', data.action.title));
+        data.action.sentences.forEach(sentence => primary.append(node('p', '', sentence)));
+        primary.append(makeLink(data.action.url, 'cta', data.action.button));
+
+        const section = node('section', 'list-section');
+        section.append(node('h2', 'list-heading', data.listTitle));
+        const list = node('div', 'items');
+        data.cards.forEach(card => {
+          const link = makeLink(card.url, 'item');
+          link.setAttribute('aria-label', `${card.title}. ${card.subtitle}. ${data.linkLabel}`);
+          link.append(node('span', 'item-number', card.number));
+          const content = node('div', 'item-text');
+          content.append(node('p', 'item-title', card.title), node('p', 'item-subtitle', card.subtitle));
+          link.append(content);
+          const arrowHolder = node('span', 'item-arrow');
+          // Переносим стрелку в конец карточки, чтобы кликалась вся площадь.
+          arrowHolder.append(link.querySelector('.icon-arrow'));
+          link.append(arrowHolder);
+          list.append(link);
+        });
+        section.append(list);
+
+        const footer = node('footer', 'footer');
+        footer.append(node('div', 'footer-name', data.footerName), node('div', 'footer-school', data.footerSchool));
+        app.replaceChildren(header, primary, section, footer);
+      }
+
+      if (insideTelegram && tg) {
+        try {
+          if (typeof tg.ready === 'function') tg.ready();
+          if (typeof tg.expand === 'function') tg.expand();
+          if (typeof tg.setHeaderColor === 'function') tg.setHeaderColor('#0B1327');
+          if (typeof tg.setBackgroundColor === 'function') tg.setBackgroundColor('#0B1327');
+        } catch (error) {
+          // В обычном браузере интерфейс и ссылки работают без Telegram API.
+        }
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>
