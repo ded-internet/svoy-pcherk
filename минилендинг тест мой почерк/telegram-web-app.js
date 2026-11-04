@@ -1,1 +1,0 @@
-<script src="telegram-web-app.js"></script>
