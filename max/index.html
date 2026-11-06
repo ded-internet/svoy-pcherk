@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B1327">
+  <meta name="color-scheme" content="dark">
+  <title>Свой почерк — ДЕД интернет</title>
+
+  <script src="https://st.max.ru/js/max-web-app.js"></script>
+
+  <script>
+    // меняете только этот блок
+    window.KK_DATA = {
+      pageTitle: 'Мой почерк — ДЕД интернет',
+      channel: 'ДЕД ИНТЕРНЕТ',
+      headingLines: ['Мой', 'почерк'],
+      intro: 'Ваш опыт, ваши мысли и ваша интонация — в текстах, которые помогает создавать ИИ.',
+
+      action: {
+        eyebrow: 'ЗНАКОМСТВО С ПРОДУКТОМ',
+        title: 'Научите ИИ писать вашим голосом',
+        sentences: [
+          '«Мой почерк» помогает передать нейросети вашу манеру письма.',
+          'Чтобы тексты звучали естественно и были похожи на вас.'
+        ],
+        button: 'Узнать о «Моем почерке»',
+        url: 'https://lix.li/njiUP'
+      },
+
+      listTitle: 'Что посмотреть',
+      cards: [
+        {
+          number: '01',
+          title: 'Мой почерк',
+          subtitle: 'Научит ИИ писать вашим голосом',
+          url: 'https://lix.li/njiUP'
+        }
+      ],
+
+      footerName: 'Константин Евдокименко',
+      footerSchool: 'ДЕД интернет',
+      linkLabel: 'Открыть ссылку'
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0B1327;
+      --card: #162541;
+      --nested: #24345B;
+      --white: #FFFFFF;
+      --muted: #C5D1E8;
+      --accent: #71E4D8;
+      --border: rgba(197, 209, 232, .14);
+      --gradient: linear-gradient(
+        105deg,
+        #8EA8FF 0%,
+        #71E4D8 100%
+      );
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Manrope, 'Segoe UI', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    a {
+      touch-action: manipulation;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 560px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding:
+        calc(42px + env(safe-area-inset-top, 0px))
+        24px
+        calc(30px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+      flex-direction: column;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 26px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .21em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 19px;
+      height: 1px;
+      flex: none;
+      background: var(--accent);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: Inter, 'Arial Black', 'Segoe UI', sans-serif;
+      font-size: clamp(58px, 14vw, 84px);
+      font-weight: 900;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title span:last-child {
+      color: var(--accent);
+    }
+
+    .hero-description {
+      max-width: 420px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .primary-card {
+      position: relative;
+      margin-top: 42px;
+      padding: 27px 23px 23px;
+      border: 1px solid rgba(197, 209, 232, .18);
+      border-radius: 26px;
+      background: var(--card);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, .1);
+      overflow: hidden;
+    }
+
+    .primary-card::after {
+      content: '';
+      position: absolute;
+      top: -65px;
+      right: -80px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(113, 228, 216, .12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .section-label {
+      margin: 0 0 15px;
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: .16em;
+      font-weight: 800;
+    }
+
+    .primary-card h2 {
+      position: relative;
+      margin: 0 0 18px;
+      max-width: 390px;
+      font-family: Inter, 'Arial Black', 'Segoe UI', sans-serif;
+      font-size: clamp(26px, 6.2vw, 34px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.16;
+    }
+
+    .primary-card p:not(.section-label) {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 24px;
+      min-height: 60px;
+      padding: 15px 18px 15px 20px;
+      border-radius: 16px;
+      background: var(--gradient);
+      color: #0B1327;
+      font-size: 15px;
+      line-height: 1.3;
+      font-weight: 800;
+      box-shadow: 0 8px 25px rgba(113, 228, 216, .12);
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .cta:active,
+    .item:active {
+      transform: scale(.985);
+    }
+
+    .cta:hover {
+      filter: brightness(1.06);
+    }
+
+    .icon-arrow {
+      flex: none;
+      width: 21px;
+      height: 21px;
+    }
+
+    .list-section {
+      margin-top: 37px;
+    }
+
+    .list-heading {
+      margin: 0 0 17px;
+      font-family: Inter, 'Arial Black', 'Segoe UI', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -.025em;
+    }
+
+    .items {
+      display: grid;
+      gap: 12px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-height: 92px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: var(--card);
+      transition: background .15s ease, transform .15s ease;
+    }
+
+    .item:hover {
+      background: #1A2C4D;
+    }
+
+    .item-number {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      flex: none;
+      border: 1px solid rgba(197, 209, 232, .10);
+      border-radius: 13px;
+      background: var(--nested);
+      color: var(--accent);
+      font-family: Inter, 'Segoe UI', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .item-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .item-title {
+      margin: 0 0 5px;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .item-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .item-arrow {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 50%;
+      background: var(--nested);
+      color: var(--accent);
+    }
+
+    .item-arrow .icon-arrow {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding-top: 48px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .footer::before {
+      content: '';
+      display: block;
+      height: 1px;
+      margin-bottom: 19px;
+      background: var(--border);
+    }
+
+    .footer-name {
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .footer-school {
+      color: var(--muted);
+    }
+
+    @media (max-width: 365px) {
+      .app {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .primary-card {
+        padding: 23px 19px 19px;
+      }
+
+      .hero-title {
+        font-size: 58px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main id="app" class="app"></main>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const data = window.KK_DATA;
+      const wa = window.WebApp;
+
+      // SDK может загрузиться и вне MAX.
+      // Проверяем реальные данные инициализации.
+
+      const insideMax = Boolean(wa && (
+        wa.initData ||
+        wa.platform ||
+        wa.version ||
+        (wa.initDataUnsafe && wa.initDataUnsafe.user)
+      ));
+
+      const app = document.getElementById('app');
+
+      function node(tag, className, value) {
+        const el = document.createElement(tag);
+
+        if (className) {
+          el.className = className;
+        }
+
+        if (value !== undefined) {
+          el.textContent = value;
+        }
+
+        return el;
+      }
+
+      function arrow() {
+        const ns = 'http://www.w3.org/2000/svg';
+
+        const svg = document.createElementNS(ns, 'svg');
+
+        svg.setAttribute('class', 'icon-arrow');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+        svg.setAttribute('aria-hidden', 'true');
+
+        const p = document.createElementNS(ns, 'path');
+        p.setAttribute(
+          'd',
+          'M5 12h14m-6-6 6 6-6 6'
+        );
+
+        svg.append(p);
+
+        return svg;
+      }
+
+      function makeLink(url, className, text) {
+        const a = node('a', className);
+
+        a.href = url;
+        a.dataset.url = url;
+
+        a.target = insideMax ? '_self' : '_blank';
+
+        if (!insideMax) {
+          a.rel = 'noopener noreferrer';
+        }
+
+        if (text) {
+          a.append(node('span', '', text));
+        }
+
+        a.append(arrow());
+
+        a.addEventListener('click', onLinkClick);
+
+        return a;
+      }
+
+      function onLinkClick(event) {
+
+        // В браузере ссылка открывается обычным способом.
+        if (!insideMax) return;
+
+        const url = event.currentTarget.dataset.url;
+
+        if (!url) return;
+
+        const isMaxLink = url.startsWith('https://max.ru/');
+
+        if (isMaxLink) {
+
+          if (typeof wa.openMaxLink === 'function') {
+            event.preventDefault();
+
+            // Порядок: открыть ссылку, затем закрыть Web App.
+            try {
+              wa.openMaxLink(url);
+            } finally {
+              if (typeof wa.close === 'function') {
+                wa.close();
+              }
+            }
+          }
+
+        } else if (typeof wa.openLink === 'function') {
+
+          event.preventDefault();
+          wa.openLink(url);
+
+        }
+      }
+
+      function render() {
+
+        document.title = data.pageTitle;
+
+        // ШАПКА
+
+        const header = node('header', 'hero');
+
+        header.append(
+          node('p', 'eyebrow', data.channel)
+        );
+
+        const h1 = node('h1', 'hero-title');
+
+        data.headingLines.forEach(line => {
+          h1.append(node('span', '', line));
+        });
+
+        header.append(
+          h1,
+          node('p', 'hero-description', data.intro)
+        );
+
+        // ГЛАВНЫЙ БЛОК
+
+        const primary = node('section', 'primary-card');
+
+        primary.append(
+          node('p', 'section-label', data.action.eyebrow)
+        );
+
+        primary.append(
+          node('h2', '', data.action.title)
+        );
+
+        data.action.sentences.forEach(sentence => {
+          primary.append(node('p', '', sentence));
+        });
+
+        primary.append(
+          makeLink(
+            data.action.url,
+            'cta',
+            data.action.button
+          )
+        );
+
+        // СПИСОК КАРТОЧЕК
+
+        const section = node('section', 'list-section');
+
+        section.append(
+          node('h2', 'list-heading', data.listTitle)
+        );
+
+        const list = node('div', 'items');
+
+        data.cards.forEach(card => {
+
+          const link = makeLink(card.url, 'item');
+
+          link.setAttribute(
+            'aria-label',
+            `${card.title}. ${card.subtitle}. ${data.linkLabel}`
+          );
+
+          link.append(
+            node('span', 'item-number', card.number)
+          );
+
+          const content = node('div', 'item-text');
+
+          content.append(
+            node('p', 'item-title', card.title),
+            node('p', 'item-subtitle', card.subtitle)
+          );
+
+          link.append(content);
+
+          const arrowHolder = node('span', 'item-arrow');
+
+          arrowHolder.append(
+            link.querySelector('.icon-arrow')
+          );
+
+          link.append(arrowHolder);
+
+          list.append(link);
+
+        });
+
+        section.append(list);
+
+        // ПОДВАЛ
+
+        const footer = node('footer', 'footer');
+
+        footer.append(
+          node('div', 'footer-name', data.footerName),
+          node('div', 'footer-school', data.footerSchool)
+        );
+
+        app.replaceChildren(
+          header,
+          primary,
+          section,
+          footer
+        );
+      }
+
+      // ИНИЦИАЛИЗАЦИЯ MAX
+
+      if (insideMax) {
+        try {
+
+          if (typeof wa.ready === 'function') {
+            wa.ready();
+          }
+
+          if (typeof wa.expand === 'function') {
+            wa.expand();
+          }
+
+          if (typeof wa.setHeaderColor === 'function') {
+            wa.setHeaderColor('#0B1327');
+          }
+
+          if (typeof wa.setBackgroundColor === 'function') {
+            wa.setBackgroundColor('#0B1327');
+          }
+
+        } catch (error) {
+          // Если часть методов недоступна,
+          // страница продолжает работать.
+        }
+      }
+
+      render();
+
+    })();
+  </script>
+</body>
+</html>
